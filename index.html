@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>电子科技大学</title>
+    <link rel="stylesheet" href="css/base.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+    <script>
+      window.onload=function() {
+          //获取事件源和相关元素
+          var inner = document.getElementById("inner");
+          var imgWidth = inner.offsetWidth;
+          var ele = inner.children[0];
+          var spanArr = inner.children[1].children;
+          //绑定事件与书写事件驱动程序(for循环绑定)
+          for (var i = 0; i < spanArr.length; i++) {
+
+              spanArr[i].index = i;//获得索引值
+              spanArr[i].onmouseover = function () {
+                  //点亮盒子
+                  for (var j = 0; j < spanArr.length; j++) {
+                      spanArr[j].className = "";
+                  }
+                      this.className = "current";
+
+                  //移动ul（向左移动，给定目标为负值）
+                  animate(ele, -this.index * imgWidth);//第一个是给谁做动画，第二个是目标位置
+              }
+          }
+
+          function animate(ele, target) {
+              //要用定时器，先清定时器
+              clearInterval(ele.timer);
+              //获得移动速度
+              var speed = target > ele.offsetLeft?15 : -15;
+              ele.timer = setInterval(function () {
+
+                  var result = target - ele.offsetLeft;
+
+                  ele.style.left = ele.offsetLeft + speed + "px";
+                  console.log(ele.offsetLeft);
+                  if (Math.abs(result) < 15) {
+                      ele.style.left = target + "px";
+                      clearInterval(ele.timer);
+                  }
+
+              }, 20)
+
+          }
+
+      }
+
+    </script>
+</head>
+<body>
+     <!--整体外层容器-->
+    <div id="container">
+        <!--banner条-->
+        <header>
+        <div id="banner">
+           <a class="logo"> <img src="images/logo.png" alt="电子科技大学欢迎您"></a>
+        </div>
+        </header>
+        <!--全局导航条-->
+        <nav>
+        <div id="globallink">
+           <ul class="lead">
+
+               <li class="class1"><a href="" >学校概况</a>
+                   <ul>
+                       <li ><a href="#">学校简介</a></li>
+                       <li ><a href="#">学校历史</a></li>
+                   </ul>
+               </li>
+
+               <li class="class2"><a href="" >师资队伍</a>
+                   <ul>
+                       <li ><a href="#">两院院士</a></li>
+                       <li ><a href="#">杰出人才</a></li>
+                   </ul>
+               </li>
+               <li class="class3"><a href="" >学院部门</a>
+                   <ul>
+                       <li ><a href="#">部门</a></li>
+                       <li ><a href="#">学院</a></li>
+                   </ul>
+               </li>
+               <li class="class4"><a href="" >人才培养</a>
+                   <ul>
+                       <li ><a href="#">本科教育</a></li>
+                       <li ><a href="#">研究生教育</a></li>
+
+                   </ul>
+               </li>
+               <li class="class5"><a href="" >招生情况</a>
+                   <ul>
+                       <li ><a href="#">本科招生</a></li>
+                       <li ><a href="#">研究生招生</a></li>
+                       <li ><a href="#">留学生招生</a></li>
+                   </ul>
+               </li>
+               <li class="class6"><a href="" >就业情况</a>
+                   <ul>
+                       <li ><a href="#">本科就业</a></li>
+                       <li ><a href="#">研究生就业</a></li>
+                   </ul>
+               </li>
+               <li class="class7"><a href="" >科学研究</a>
+                   <ul>
+                       <li ><a href="#">科研平台</a></li>
+                       <li ><a href="#">成果奖励</a></li>
+                   </ul>
+               </li>
+               <li class="class8"><a href="" >公共服务</a>
+                   <ul>
+                       <li ><a href="#">后勤服务平台</a></li>
+                       <li ><a href="#">学校医院</a></li>
+                       <li ><a href="#">图书馆</a></li>
+                   </ul>
+               </li>
+               <li class="class9"><a href="" >信息门户</a></li>
+           </ul>
+        </div>
+        </nav>
+        <!--中间栏-->
+        <div id="middle">
+            <aside id="news">
+                <h4 class="UESTC-news">成电新闻</h4>
+                <ul >
+                   <li class="news1" title="【改革视点】大师通识课程启动 菲尔兹奖得主来校授课"><a href="" >【改革视点】大师通识课程启动 菲尔兹奖得主来校授课</a></li>
+                    <li class="news2" title="学校2018年度国家自然科学基金项目申请数创新高"><a href="" >学校2018年度国家自然科学基金项目申请数创新高</a></li>
+                    <li class="news3" title="英才学院迎来2017级“新鲜人” “国字号”导师寄语学子"><a href="" >英才学院迎来2017级“新鲜人” “国字号”导师寄语学子</a></li>
+                    <li class="news4" title="【思政聚焦】学校首期“辅导员夜校”开讲"><a href="" >【思政聚焦】学校首期“辅导员夜校”开讲</a></li>
+                    <li class="news5" title="国防科工局来校调研军民融合和国防科技创新工作"><a href="" >国防科工局来校调研军民融合和国防科技创新工作</a></li>
+                    <li class="news6" title="【我最喜爱的老师】朱培勇：数学世界里的不老顽童
+                        ——记第四届“我最喜爱的老师”、数学科学学院朱培勇教授"><a href="" >【我最喜爱的老师】朱培勇：数学世界里的不老顽童
+                        ——记第四届“我最喜爱的老师”、数学科学学院朱培勇教授</a></li>
+                    <li class="news7" title="学校与湖南广播电视台共建智慧广播技术研究联合实验室"><a href="" >学校与湖南广播电视台共建智慧广播技术研究联合实验室</a></li>
+                    <li class="news8" title="天体物理跨界古典文学 李滚教授登上《中国诗词大会》舞台"><a href="" >天体物理跨界古典文学 李滚教授登上《中国诗词大会》舞台</a></li>
+                </ul>
+            </aside>
+            <section id="beaulty">
+                <h4 class="scene">成电风光</h4>
+                <div class="box" id="box">
+                    <div id="inner" class="inner">
+                        <ul id="image">
+                            <li><img src="images/image1.jpg" width="500" height="400"/></li>
+                            <li><img src="images/image2.jpg" width="500" height="400"/></li>
+                            <li><img src="images/image3.jpg" width="500" height="400"/></li>
+                            <li><img src="images/image4.jpg" width="500" height="400"/></li>
+                            <li><img src="images/image5.jpg" width="500" height="400"/></li>
+                            <li><img src="images/image6.jpg" width="500" height="400"/></li>
+                        </ul>
+                        <div class="square">
+                           <span class="current">1</span>
+                            <span>2</span>
+                            <span>3</span>
+                            <span>4</span>
+                            <span>5</span>
+                            <span>6</span>
+
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+        <!--脚注栏-->
+       <footer>
+            <div class="last">
+                <p>清水河校区：成都市高新区（西区）西源大道2006号　邮编： 611731</p>
+                <p>沙河校区：成都市建设北路二段四号　邮编：610054</p>
+
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>
